@@ -3,10 +3,10 @@ import Polaroid from './components/Polaroid'
 
 function App() {
   const [imagens, setImagens] = useState([])
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(2)
   const [loading, setLoading] = useState(false)
 
-  const uriApi = `https://picsum.photos/v2/list?page=${page}&limit=3`
+  const uriApi = `https://picsum.photos/v2/list?page=${page}&limit=20`
 
   useEffect(()=> {
     ( async () => {
@@ -45,7 +45,7 @@ function App() {
         <div className='w-full max-w-screen-2xl grid gap-10 lg:grid-cols-2 xl:grid-cols-3 p-10  rounded-sm drop-shadow-sm m-auto items-center justify-center '>
           
           {imagens.map((item, index)=>(
-            <Polaroid src={item.download_url} index={index} author={item.author}/>
+            <Polaroid src={item.download_url} index={index} key={index} author={item.author}/>
           ))}
 
           {loading && <p>Carregando...</p>}
